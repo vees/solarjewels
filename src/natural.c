@@ -59,6 +59,7 @@ static TextLayer *time_text_layer, *date_text_layer, *temp_text_layer;
 
 static char time_buffer[16], date_buffer[16], temp_buffer[16], log_buffer[256];
 static int current_image_index[2] = {99, 99};       // points to nothing
+static int current_sun_index = 99;                  // points to nothing
 static int timezone_offset = 0;                     // actual epoch - time(NULL)
 static int temperature = -999;                      // current temp in fahrenheiht
 static int cityID = -999;                           // identifier for city from openweathermap
@@ -332,6 +333,87 @@ static double calc_moon_phase(time_t now) {
   return phase;
 }
 
+static void update_sun_image(time_t now) {
+  // Calculate solar noon as the average of sunrise and sunset epochs
+  // Do a time calculation against sunrise, sunset and solar noon
+  // If now > sunrise && now < sunrise + 3600 secs   ====   icon = 1
+  // If now > solar noon - 1800 secs && now < solar noon + 1800 secs   ==== icon = 2
+  // If now > sunset - 3600 && now < sunset  === icon = 3
+  // All other cases, icon = 0
+
+  time_t this_sunrise_epoch;
+  time_t this_sunset_epoch;
+  time_t this_solarnoon_epoch;
+  int new_sun_index = 0;   // Product of above
+
+  // Decided which rise/set epochs to use (prev or next).
+  if (difftime(next_sunrise_epoch, now)<86400) {
+    this_sunrise_epoch = next_sunrise_epoch;
+  } else if (difftime(now, prev_sunrise_epoch)<86400) {
+    this_sunrise_epoch = prev_sunrise_epoch;
+  } else {
+    this_sunrise_epoch = INVALID;
+  }
+  if (difftime(next_sunset_epoch, now)<86400) {
+    this_sunset_epoch = next_sunset_epoch;
+  } else if (difftime(now, prev_sunset_epoch)<86400) {
+    this_sunset_epoch = prev_sunset_epoch;
+  } else {
+    this_sunset_epoch = INVALID;
+  }
+
+  /* If we have a valid rise and set within 24 hours, draw
+    both sunrise and sunset, creating a day and night side. */
+  if (this_sunrise_epoch != INVALID && this_sunset_epoch != INVALID) {
+    this_solarnoon_epoch = ((this_sunset_epoch-this_sunrise_epoch)/2)+this_sunrise_epoch;
+    if (now > this_sunrise_epoch && now < this_sunrise_epoch + 3600)
+    {
+      new_sun_index=1;
+    }
+    else if (now > this_solarnoon_epoch - 1800 && now < this_solarnoon_epoch + 1800)
+    {
+      new_sun_index=2;
+    }
+    else if (now > this_sunset_epoch - 3600 && now < this_sunset_epoch) 
+    {
+      new_sun_index=3;
+    }
+    else
+    {
+      new_sun_index=0;
+    }
+  }
+  else {
+    new_sun_index = (now / 60) % 4;
+  }
+    
+  // If we need it, load in a new image.
+  if (new_sun_index != current_sun_index) {
+    current_sun_index = new_sun_index;
+    int resource_id_b = SUN_IDS[current_sun_index][0];
+    int resource_id_w = SUN_IDS[current_sun_index][1];
+    
+    layer_remove_from_parent(bitmap_layer_get_layer(b_sun_layer));
+    bitmap_layer_destroy(b_sun_layer);
+    gbitmap_destroy(b_sun_image);
+    b_sun_image = gbitmap_create_with_resource(resource_id_b);
+    b_sun_layer = bitmap_layer_create(GRect(0, 0, SUN_DIAMETER, SUN_DIAMETER));
+    bitmap_layer_set_bitmap(b_sun_layer, b_sun_image);
+    bitmap_layer_set_background_color(b_sun_layer, GColorClear);
+    bitmap_layer_set_compositing_mode(b_sun_layer, GCompOpAnd);
+    layer_add_child(sun_layer, bitmap_layer_get_layer(b_sun_layer));
+
+    layer_remove_from_parent(bitmap_layer_get_layer(w_sun_layer));
+    bitmap_layer_destroy(w_sun_layer);
+    gbitmap_destroy(w_sun_image);
+    w_sun_image = gbitmap_create_with_resource(resource_id_w);
+    w_sun_layer = bitmap_layer_create(GRect(0, 0, SUN_DIAMETER, SUN_DIAMETER));
+    bitmap_layer_set_bitmap(w_sun_layer, w_sun_image);
+    bitmap_layer_set_background_color(w_sun_layer, GColorClear);
+    bitmap_layer_set_compositing_mode(w_sun_layer, GCompOpOr);
+    layer_add_child(sun_layer, bitmap_layer_get_layer(w_sun_layer));
+  }
+}
 
 static void update_moon_image(time_t now) {
   /* Determine the image_type and image_rotation to use. Phase must be in range [0,1].
@@ -582,9 +664,10 @@ static void minute_tick_handler(struct tm *tick_time, TimeUnits units_changed) {
   time_t now = time(NULL);
   strftime(time_buffer, sizeof("00:00"), "%H:%M", tick_time);
   text_layer_set_text(time_text_layer, time_buffer);
-  strftime(date_buffer, sizeof("00-00"), "%m-%d", tick_time);
+  strftime(date_buffer, sizeof("00-00"), "%m/%d", tick_time);
   text_layer_set_text(date_text_layer, date_buffer);
 
+  update_sun_image(now);
   reframe_sun_layer(now);
 
   if (time_to_refresh() && js_ready) {
@@ -677,21 +760,24 @@ static void window_load(Window *window) {
   sun_layer = layer_create(GRect(0, 0, SUN_DIAMETER, SUN_DIAMETER));
   layer_set_frame(sun_layer, GRect(0, 100, SUN_DIAMETER, SUN_DIAMETER));
   layer_add_child(window_layer, sun_layer);
-
-  b_sun_image = gbitmap_create_with_resource(RESOURCE_ID_SUN_B);
+  
+  uint32_t sun_b_resource = RESOURCE_ID_SUN_B;
+  uint32_t sun_w_resource = RESOURCE_ID_SUN_W;
+  
+  b_sun_image = gbitmap_create_with_resource(sun_b_resource);
   b_sun_layer = bitmap_layer_create(GRect(0, 0, SUN_DIAMETER, SUN_DIAMETER));
   bitmap_layer_set_bitmap(b_sun_layer, b_sun_image);
   bitmap_layer_set_background_color(b_sun_layer, GColorClear);
   bitmap_layer_set_compositing_mode(b_sun_layer, GCompOpAnd);
   layer_add_child(sun_layer, bitmap_layer_get_layer(b_sun_layer));
 
-  w_sun_image = gbitmap_create_with_resource(RESOURCE_ID_SUN_W);
+  w_sun_image = gbitmap_create_with_resource(sun_w_resource);
   w_sun_layer = bitmap_layer_create(GRect(0, 0, SUN_DIAMETER, SUN_DIAMETER));
   bitmap_layer_set_bitmap(w_sun_layer, w_sun_image);
   bitmap_layer_set_background_color(w_sun_layer, GColorClear);
   bitmap_layer_set_compositing_mode(w_sun_layer, GCompOpOr);
   layer_add_child(sun_layer, bitmap_layer_get_layer(w_sun_layer));
-
+  
   // Create the moon layer
   moon_layer = layer_create(GRect(0, 0, MOON_DIAMETER, MOON_DIAMETER));
   layer_set_frame(moon_layer, GRect(80, 100, MOON_DIAMETER, MOON_DIAMETER));

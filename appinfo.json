@@ -1,369 +1,402 @@
 {
-  "uuid": "179c8e43-5562-453f-9ece-7b004ecb92c2",
-  "shortName": "natural",
-  "longName": "natural",
-  "companyName": "Thomas Hettinger",
-  "versionCode": 10,
-  "versionLabel": "1.0.0",
-  "capabilities": [ "location" ],
-  "watchapp": {
-    "watchface": true
-  },
-  "appKeys": {
-    "status": 0,
-    "tzOffset": 1,
-    "sunrise": 2,
-    "sunset": 3,
-    "temperature": 4,
-    "cityID": 5
-  },
-  "resources": {
-    "media": [
-      {
-        "type": "png",
-        "name": "NO_BLUETOOTH",
-        "file": "images/no_bluetooth.png"
-      },
-      {
-        "type": "png",
-        "name": "REFRESH",
-        "file": "images/refresh.png"
-      },
-      {
-        "type": "png",
-        "name": "EMPTY",
-        "file": "images/empty.png"
-      },
-      {
-        "type": "png",
-        "name": "ERROR",
-        "file": "images/error.png"
-      },
-      {
-        "type": "png",
-        "name": "BATT_100",
-        "file": "images/battery/batt_100.png"
-      },
-      {
-        "type": "png",
-        "name": "BATT_80",
-        "file": "images/battery/batt_80.png"
-      },
-      {
-        "type": "png",
-        "name": "BATT_60",
-        "file": "images/battery/batt_60.png"
-      },
-      {
-        "type": "png",
-        "name": "BATT_40",
-        "file": "images/battery/batt_40.png"
-      },
-      {
-        "type": "png",
-        "name": "BATT_20",
-        "file": "images/battery/batt_20.png"
-      },
-      {
-        "type": "png",
-        "name": "BATT_10",
-        "file": "images/battery/batt_10.png"
-      },
-      {
-        "type": "png",
-        "name": "BATT_CHARGE",
-        "file": "images/battery/batt_charge.png"
-      },
-      {
-        "type": "png",
-        "name": "CLOCKFACE_B",
-        "file": "images/face_bg_black.png"
-      },
-      {
-        "type": "png",
-        "name": "CLOCKFACE_W",
-        "file": "images/face_bg_white.png"
-      },
-      {
-        "type": "png",
-        "name": "SUN_B",
-        "file": "images/sun_hand_black.png"
-      },
-      {
-        "type": "png",
-        "name": "SUN_W",
-        "file": "images/sun_hand_white.png"
-      },
-      {
-        "type": "png",
-        "name": "DS_B",
-        "file": "images/ds_b.png"
-      },
-      {
-        "type": "png",
-        "name": "DS_W",
-        "file": "images/ds_w.png"
-      },
-      {
-        "type": "png",
-        "name": "NEW_B",
-        "file": "images/moons/new_b.png"
-      },
-      {
-        "type": "png",
-        "name": "NEW_W",
-        "file": "images/moons/new_w.png"
-      },
-      {
-        "type": "png",
-        "name": "FULL_B",
-        "file": "images/moons/full_b.png"
-      },
-      {
-        "type": "png",
-        "name": "FULL_W",
-        "file": "images/moons/full_w.png"
-      },
-      {
-        "type": "png",
-        "name": "CRESCENT_0_B",
-        "file": "images/moons/crescent_0_b.png"
-      },
-      {
-        "type": "png",
-        "name": "CRESCENT_0_W",
-        "file": "images/moons/crescent_0_w.png"
-      },
-      {
-        "type": "png",
-        "name": "CRESCENT_1_B",
-        "file": "images/moons/crescent_1_b.png"
-      },
-      {
-        "type": "png",
-        "name": "CRESCENT_1_W",
-        "file": "images/moons/crescent_1_w.png"
-      },
-      {
-        "type": "png",
-        "name": "CRESCENT_2_B",
-        "file": "images/moons/crescent_2_b.png"
-      },
-      {
-        "type": "png",
-        "name": "CRESCENT_2_W",
-        "file": "images/moons/crescent_2_w.png"
-      },
-      {
-        "type": "png",
-        "name": "CRESCENT_3_B",
-        "file": "images/moons/crescent_3_b.png"
-      },
-      {
-        "type": "png",
-        "name": "CRESCENT_3_W",
-        "file": "images/moons/crescent_3_w.png"
-      },
-      {
-        "type": "png",
-        "name": "CRESCENT_4_B",
-        "file": "images/moons/crescent_4_b.png"
-      },
-      {
-        "type": "png",
-        "name": "CRESCENT_4_W",
-        "file": "images/moons/crescent_4_w.png"
-      },
-      {
-        "type": "png",
-        "name": "CRESCENT_5_B",
-        "file": "images/moons/crescent_5_b.png"
-      },
-      {
-        "type": "png",
-        "name": "CRESCENT_5_W",
-        "file": "images/moons/crescent_5_w.png"
-      },
-      {
-        "type": "png",
-        "name": "CRESCENT_6_B",
-        "file": "images/moons/crescent_6_b.png"
-      },
-      {
-        "type": "png",
-        "name": "CRESCENT_6_W",
-        "file": "images/moons/crescent_6_w.png"
-      },
-      {
-        "type": "png",
-        "name": "CRESCENT_7_B",
-        "file": "images/moons/crescent_7_b.png"
-      },
-      {
-        "type": "png",
-        "name": "CRESCENT_7_W",
-        "file": "images/moons/crescent_7_w.png"
-      },
-      {
-        "type": "png",
-        "name": "QUARTER_0_B",
-        "file": "images/moons/quarter_0_b.png"
-      },
-      {
-        "type": "png",
-        "name": "QUARTER_0_W",
-        "file": "images/moons/quarter_0_w.png"
-      },
-      {
-        "type": "png",
-        "name": "QUARTER_1_B",
-        "file": "images/moons/quarter_1_b.png"
-      },
-      {
-        "type": "png",
-        "name": "QUARTER_1_W",
-        "file": "images/moons/quarter_1_w.png"
-      },
-      {
-        "type": "png",
-        "name": "QUARTER_2_B",
-        "file": "images/moons/quarter_2_b.png"
-      },
-      {
-        "type": "png",
-        "name": "QUARTER_2_W",
-        "file": "images/moons/quarter_2_w.png"
-      },
-      {
-        "type": "png",
-        "name": "QUARTER_3_B",
-        "file": "images/moons/quarter_3_b.png"
-      },
-      {
-        "type": "png",
-        "name": "QUARTER_3_W",
-        "file": "images/moons/quarter_3_w.png"
-      },
-      {
-        "type": "png",
-        "name": "QUARTER_4_B",
-        "file": "images/moons/quarter_4_b.png"
-      },
-      {
-        "type": "png",
-        "name": "QUARTER_4_W",
-        "file": "images/moons/quarter_4_w.png"
-      },
-      {
-        "type": "png",
-        "name": "QUARTER_5_B",
-        "file": "images/moons/quarter_5_b.png"
-      },
-      {
-        "type": "png",
-        "name": "QUARTER_5_W",
-        "file": "images/moons/quarter_5_w.png"
-      },
-      {
-        "type": "png",
-        "name": "QUARTER_6_B",
-        "file": "images/moons/quarter_6_b.png"
-      },
-      {
-        "type": "png",
-        "name": "QUARTER_6_W",
-        "file": "images/moons/quarter_6_w.png"
-      },
-      {
-        "type": "png",
-        "name": "QUARTER_7_B",
-        "file": "images/moons/quarter_7_b.png"
-      },
-      {
-        "type": "png",
-        "name": "QUARTER_7_W",
-        "file": "images/moons/quarter_7_w.png"
-      },
-      {
-        "type": "png",
-        "name": "GIBBOUS_0_B",
-        "file": "images/moons/gibbous_0_b.png"
-      },
-      {
-        "type": "png",
-        "name": "GIBBOUS_0_W",
-        "file": "images/moons/gibbous_0_w.png"
-      },
-      {
-        "type": "png",
-        "name": "GIBBOUS_1_B",
-        "file": "images/moons/gibbous_1_b.png"
-      },
-      {
-        "type": "png",
-        "name": "GIBBOUS_1_W",
-        "file": "images/moons/gibbous_1_w.png"
-      },
-      {
-        "type": "png",
-        "name": "GIBBOUS_2_B",
-        "file": "images/moons/gibbous_2_b.png"
-      },
-      {
-        "type": "png",
-        "name": "GIBBOUS_2_W",
-        "file": "images/moons/gibbous_2_w.png"
-      },
-      {
-        "type": "png",
-        "name": "GIBBOUS_3_B",
-        "file": "images/moons/gibbous_3_b.png"
-      },
-      {
-        "type": "png",
-        "name": "GIBBOUS_3_W",
-        "file": "images/moons/gibbous_3_w.png"
-      },
-      {
-        "type": "png",
-        "name": "GIBBOUS_4_B",
-        "file": "images/moons/gibbous_4_b.png"
-      },
-      {
-        "type": "png",
-        "name": "GIBBOUS_4_W",
-        "file": "images/moons/gibbous_4_w.png"
-      },
-      {
-        "type": "png",
-        "name": "GIBBOUS_5_B",
-        "file": "images/moons/gibbous_5_b.png"
-      },
-      {
-        "type": "png",
-        "name": "GIBBOUS_5_W",
-        "file": "images/moons/gibbous_5_w.png"
-      },
-      {
-        "type": "png",
-        "name": "GIBBOUS_6_B",
-        "file": "images/moons/gibbous_6_b.png"
-      },
-      {
-        "type": "png",
-        "name": "GIBBOUS_6_W",
-        "file": "images/moons/gibbous_6_w.png"
-      },
-      {
-        "type": "png",
-        "name": "GIBBOUS_7_B",
-        "file": "images/moons/gibbous_7_b.png"
-      },
-      {
-        "type": "png",
-        "name": "GIBBOUS_7_W",
-        "file": "images/moons/gibbous_7_w.png"
-      }
-    ]
-  }
+    "appKeys": {
+        "cityID": 5,
+        "status": 0,
+        "sunrise": 2,
+        "sunset": 3,
+        "temperature": 4,
+        "tzOffset": 1
+    },
+    "capabilities": [
+        "location"
+    ],
+    "companyName": "Rob Carlson via Thomas Hettinger",
+    "longName": "natural-vees",
+    "projectType": "native",
+    "resources": {
+        "media": [
+            {
+                "file": "images/square_white.png",
+                "name": "SQUARE_W",
+                "type": "png"
+            },
+            {
+                "file": "images/square_black.png",
+                "name": "SQUARE_B",
+                "type": "png"
+            },
+            {
+                "file": "images/plumb_white.png",
+                "name": "PLUMB_W",
+                "type": "png"
+            },
+            {
+                "file": "images/plumb_black.png",
+                "name": "PLUMB_B",
+                "type": "png"
+            },
+            {
+                "file": "images/level_white.png",
+                "name": "LEVEL_W",
+                "type": "png"
+            },
+            {
+                "file": "images/level_black.png",
+                "name": "LEVEL_B",
+                "type": "png"
+            },
+            {
+                "file": "images/gibbous_7_w.png",
+                "name": "GIBBOUS_7_W",
+                "type": "png"
+            },
+            {
+                "file": "images/gibbous_7_b.png",
+                "name": "GIBBOUS_7_B",
+                "type": "png"
+            },
+            {
+                "file": "images/gibbous_6_w.png",
+                "name": "GIBBOUS_6_W",
+                "type": "png"
+            },
+            {
+                "file": "images/gibbous_6_b.png",
+                "name": "GIBBOUS_6_B",
+                "type": "png"
+            },
+            {
+                "file": "images/gibbous_5_w.png",
+                "name": "GIBBOUS_5_W",
+                "type": "png"
+            },
+            {
+                "file": "images/gibbous_5_b.png",
+                "name": "GIBBOUS_5_B",
+                "type": "png"
+            },
+            {
+                "file": "images/gibbous_4_w.png",
+                "name": "GIBBOUS_4_W",
+                "type": "png"
+            },
+            {
+                "file": "images/gibbous_4_b.png",
+                "name": "GIBBOUS_4_B",
+                "type": "png"
+            },
+            {
+                "file": "images/gibbous_3_w.png",
+                "name": "GIBBOUS_3_W",
+                "type": "png"
+            },
+            {
+                "file": "images/gibbous_3_b.png",
+                "name": "GIBBOUS_3_B",
+                "type": "png"
+            },
+            {
+                "file": "images/gibbous_2_w.png",
+                "name": "GIBBOUS_2_W",
+                "type": "png"
+            },
+            {
+                "file": "images/gibbous_2_b.png",
+                "name": "GIBBOUS_2_B",
+                "type": "png"
+            },
+            {
+                "file": "images/gibbous_1_w.png",
+                "name": "GIBBOUS_1_W",
+                "type": "png"
+            },
+            {
+                "file": "images/gibbous_1_b.png",
+                "name": "GIBBOUS_1_B",
+                "type": "png"
+            },
+            {
+                "file": "images/gibbous_0_w.png",
+                "name": "GIBBOUS_0_W",
+                "type": "png"
+            },
+            {
+                "file": "images/gibbous_0_b.png",
+                "name": "GIBBOUS_0_B",
+                "type": "png"
+            },
+            {
+                "file": "images/quarter_7_w.png",
+                "name": "QUARTER_7_W",
+                "type": "png"
+            },
+            {
+                "file": "images/quarter_7_b.png",
+                "name": "QUARTER_7_B",
+                "type": "png"
+            },
+            {
+                "file": "images/quarter_6_w.png",
+                "name": "QUARTER_6_W",
+                "type": "png"
+            },
+            {
+                "file": "images/quarter_6_b.png",
+                "name": "QUARTER_6_B",
+                "type": "png"
+            },
+            {
+                "file": "images/quarter_5_w.png",
+                "name": "QUARTER_5_W",
+                "type": "png"
+            },
+            {
+                "file": "images/quarter_5_b.png",
+                "name": "QUARTER_5_B",
+                "type": "png"
+            },
+            {
+                "file": "images/quarter_4_w.png",
+                "name": "QUARTER_4_W",
+                "type": "png"
+            },
+            {
+                "file": "images/quarter_4_b.png",
+                "name": "QUARTER_4_B",
+                "type": "png"
+            },
+            {
+                "file": "images/quarter_3_w.png",
+                "name": "QUARTER_3_W",
+                "type": "png"
+            },
+            {
+                "file": "images/quarter_3_b.png",
+                "name": "QUARTER_3_B",
+                "type": "png"
+            },
+            {
+                "file": "images/quarter_2_w.png",
+                "name": "QUARTER_2_W",
+                "type": "png"
+            },
+            {
+                "file": "images/quarter_2_b.png",
+                "name": "QUARTER_2_B",
+                "type": "png"
+            },
+            {
+                "file": "images/quarter_1_w.png",
+                "name": "QUARTER_1_W",
+                "type": "png"
+            },
+            {
+                "file": "images/quarter_1_b.png",
+                "name": "QUARTER_1_B",
+                "type": "png"
+            },
+            {
+                "file": "images/quarter_0_w.png",
+                "name": "QUARTER_0_W",
+                "type": "png"
+            },
+            {
+                "file": "images/quarter_0_b.png",
+                "name": "QUARTER_0_B",
+                "type": "png"
+            },
+            {
+                "file": "images/crescent_7_w.png",
+                "name": "CRESCENT_7_W",
+                "type": "png"
+            },
+            {
+                "file": "images/crescent_7_b.png",
+                "name": "CRESCENT_7_B",
+                "type": "png"
+            },
+            {
+                "file": "images/crescent_6_w.png",
+                "name": "CRESCENT_6_W",
+                "type": "png"
+            },
+            {
+                "file": "images/crescent_6_b.png",
+                "name": "CRESCENT_6_B",
+                "type": "png"
+            },
+            {
+                "file": "images/crescent_5_w.png",
+                "name": "CRESCENT_5_W",
+                "type": "png"
+            },
+            {
+                "file": "images/crescent_5_b.png",
+                "name": "CRESCENT_5_B",
+                "type": "png"
+            },
+            {
+                "file": "images/crescent_4_w.png",
+                "name": "CRESCENT_4_W",
+                "type": "png"
+            },
+            {
+                "file": "images/crescent_4_b.png",
+                "name": "CRESCENT_4_B",
+                "type": "png"
+            },
+            {
+                "file": "images/crescent_3_w.png",
+                "name": "CRESCENT_3_W",
+                "type": "png"
+            },
+            {
+                "file": "images/crescent_3_b.png",
+                "name": "CRESCENT_3_B",
+                "type": "png"
+            },
+            {
+                "file": "images/crescent_2_w.png",
+                "name": "CRESCENT_2_W",
+                "type": "png"
+            },
+            {
+                "file": "images/crescent_2_b.png",
+                "name": "CRESCENT_2_B",
+                "type": "png"
+            },
+            {
+                "file": "images/crescent_1_w.png",
+                "name": "CRESCENT_1_W",
+                "type": "png"
+            },
+            {
+                "file": "images/crescent_1_b.png",
+                "name": "CRESCENT_1_B",
+                "type": "png"
+            },
+            {
+                "file": "images/crescent_0_w.png",
+                "name": "CRESCENT_0_W",
+                "type": "png"
+            },
+            {
+                "file": "images/crescent_0_b.png",
+                "name": "CRESCENT_0_B",
+                "type": "png"
+            },
+            {
+                "file": "images/full_w.png",
+                "name": "FULL_W",
+                "type": "png"
+            },
+            {
+                "file": "images/full_b.png",
+                "name": "FULL_B",
+                "type": "png"
+            },
+            {
+                "file": "images/new_w.png",
+                "name": "NEW_W",
+                "type": "png"
+            },
+            {
+                "file": "images/new_b.png",
+                "name": "NEW_B",
+                "type": "png"
+            },
+            {
+                "file": "images/ds_w.png",
+                "name": "DS_W",
+                "type": "png"
+            },
+            {
+                "file": "images/ds_b.png",
+                "name": "DS_B",
+                "type": "png"
+            },
+            {
+                "file": "images/sun_hand_white.png",
+                "name": "SUN_W",
+                "type": "png"
+            },
+            {
+                "file": "images/sun_hand_black.png",
+                "name": "SUN_B",
+                "type": "png"
+            },
+            {
+                "file": "images/face_bg_white.png",
+                "name": "CLOCKFACE_W",
+                "type": "png"
+            },
+            {
+                "file": "images/face_bg_black.png",
+                "name": "CLOCKFACE_B",
+                "type": "png"
+            },
+            {
+                "file": "images/batt_charge.png",
+                "name": "BATT_CHARGE",
+                "type": "png"
+            },
+            {
+                "file": "images/batt_10.png",
+                "name": "BATT_10",
+                "type": "png"
+            },
+            {
+                "file": "images/batt_20.png",
+                "name": "BATT_20",
+                "type": "png"
+            },
+            {
+                "file": "images/batt_40.png",
+                "name": "BATT_40",
+                "type": "png"
+            },
+            {
+                "file": "images/batt_60.png",
+                "name": "BATT_60",
+                "type": "png"
+            },
+            {
+                "file": "images/batt_80.png",
+                "name": "BATT_80",
+                "type": "png"
+            },
+            {
+                "file": "images/batt_100.png",
+                "name": "BATT_100",
+                "type": "png"
+            },
+            {
+                "file": "images/error.png",
+                "name": "ERROR",
+                "type": "png"
+            },
+            {
+                "file": "images/empty.png",
+                "name": "EMPTY",
+                "type": "png"
+            },
+            {
+                "file": "images/refresh.png",
+                "name": "REFRESH",
+                "type": "png"
+            },
+            {
+                "file": "images/no_bluetooth.png",
+                "name": "NO_BLUETOOTH",
+                "type": "png"
+            }
+        ]
+    },
+    "shortName": "natural-vees",
+    "uuid": "DC9651B7-E76F-490D-8720-7C2EF9DFE062",
+    "versionCode": 10,
+    "versionLabel": "1.0",
+    "watchapp": {
+        "watchface": true
+    }
 }

@@ -15,6 +15,19 @@ const GPathInfo FULL_DAY_PATH_INFO = {
   .points = (GPoint []) { {0, 0}, {W, 0}, {W, H}, {0, H} }
 };
 
+/* image types
+  0 sun
+  1 square
+  2 plumb
+  3 level */
+
+const int SUN_IDS[4][2] = {
+  {RESOURCE_ID_SUN_B, RESOURCE_ID_SUN_W},
+  {RESOURCE_ID_SQUARE_B, RESOURCE_ID_SQUARE_W},
+  {RESOURCE_ID_PLUMB_B, RESOURCE_ID_PLUMB_W},
+  {RESOURCE_ID_LEVEL_B, RESOURCE_ID_LEVEL_W}
+};
+
 /*
 image_types:
   0 new
@@ -36,6 +49,8 @@ image_rotations:
   6 sun at 18
   7 sun at 21
 */
+
+
 
 const int MOON_IDS[9][9][2] = {          // [phase][rotation][color]
   {
